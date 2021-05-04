@@ -11,7 +11,10 @@ namespace SchoolSystem.Models.Profiles
     {
         public StudentSubjectProfile()
         {
+            //don't touch
             CreateMap<StudentSubject, StudentSubjectModel>().ReverseMap();
+
+
             CreateMap<StudentSubjectCreateModel, Student>()
                 .ForMember(dest => dest.Id, opt => opt.Ignore())
                 .ForMember(dest => dest.StudentSubjects, opt => opt.Ignore())
@@ -23,7 +26,6 @@ namespace SchoolSystem.Models.Profiles
             CreateMap<StudentSubjectCreateModel, StudentSubject>()
                 .ForMember(dest => dest.StudentId, opt => opt.MapFrom(src => src.StudentId))
                 .ForMember(dest => dest.SubjectId, opt => opt.MapFrom(src => src.SubjectId));
-
 
 
             CreateMap<StudentSubjectUpdateModel, Student>()

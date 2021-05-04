@@ -9,8 +9,8 @@ namespace SchoolSystem.Models.Models.StudentSubject
     public class StudentSubjectModel
     {
         public int Id { get; set; }
-        public StudentModelBase Student { get; set; }
-        public SubjectModelBase Subject { get; set; }
+        public int StudentId { get; set; }
+        public int SubjectId { get; set; }
         public int Grade { get; set; }
     }
 }
