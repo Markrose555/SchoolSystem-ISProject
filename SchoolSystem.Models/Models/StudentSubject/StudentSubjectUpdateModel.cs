@@ -10,9 +10,9 @@ namespace SchoolSystem.Models.Models.StudentSubject
         [Required]
         public int Id { get; set; }
         [Required]
-        public int Student { get; set; }
+        public int StudentId { get; set; }
         [Required]
-        public int Subject { get; set; }
+        public int SubjectId { get; set; }
         [Required]
         public int Grade { get; set; }
     }

@@ -11,7 +11,7 @@ namespace SchoolSystem.Tests.Services
     public class StudentService
     {
         static HttpClient httpClient;
-        private const string Url = "https://localhost:5001/api/Student";
+        private const string Url = "https://localhost:5001/api/Student/";
 
         public StudentService()
         {
@@ -30,9 +30,11 @@ namespace SchoolSystem.Tests.Services
 
         }
 
-        public async Task<HttpResponseMessage> GetStudent(string path = "Get")
+        public async Task<HttpResponseMessage> GetStudent(string path = "Students")
         {
+
             return await httpClient.GetAsync(path);
+
         }
     }
 }
