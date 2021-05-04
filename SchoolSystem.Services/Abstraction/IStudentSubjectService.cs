@@ -1,4 +1,4 @@
-﻿using SchoolSystem.Models.Models.StudentClass;
+﻿using SchoolSystem.Models.Models.StudentSubject;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SchoolSystem.Services.Abstraction
 {
-    public interface IStudentClassService
+    public interface IStudentSubjectService
     {
         Task<StudentSubjectModel> GetBySubjectId(int id);
 

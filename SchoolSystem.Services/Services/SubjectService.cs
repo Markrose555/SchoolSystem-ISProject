@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using SchoolSystem.Data;
 using SchoolSystem.Data.Entities;
-using SchoolSystem.Models.Models.Class;
+using SchoolSystem.Models.Models.Subject;
 using SchoolSystem.Services.Abstraction;
 using System;
 using System.Collections.Generic;
@@ -11,13 +11,13 @@ using System.Threading.Tasks;
 
 namespace SchoolSystem.Services.Services
 {
-    public class ClassService : ISubjectService
+    public class SubjectService : ISubjectService
     {
 
         private readonly SchoolSystemDbContext _context;
         private readonly IMapper _mapper;
 
-        public ClassService(Data.SchoolSystemDbContext context, IMapper mapper)
+        public SubjectService(Data.SchoolSystemDbContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;
@@ -38,7 +38,7 @@ namespace SchoolSystem.Services.Services
 
         public async Task<SubjectModelExtended> Get(int id)
         {
-            var Class = await _context.Subjects.Include(c => c.StudentSubjects).ThenInclude(sc => sc.Class).FirstOrDefaultAsync(s => s.Id == id);
+            var Class = await _context.Subjects.Include(c => c.StudentSubjects).ThenInclude(sc => sc.Subject).FirstOrDefaultAsync(s => s.Id == id);
             return _mapper.Map<SubjectModelExtended>(Class);
         }
 

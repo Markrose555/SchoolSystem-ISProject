@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace SchoolSystem.Models.Models.StudentClass
+namespace SchoolSystem.Models.Models.StudentSubject
 {
     public class StudentSubjectUpdateModel
     {

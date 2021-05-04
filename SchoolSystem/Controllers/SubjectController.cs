@@ -5,7 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using SchoolSystem.Services.Abstraction;
-using SchoolSystem.Models.Models.Class;
+using SchoolSystem.Models.Models.Subject;
 
 namespace SchoolSystem.Controllers
 {

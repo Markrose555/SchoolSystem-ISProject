@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using SchoolSystem.Data;
 using SchoolSystem.Data.Entities;
-using SchoolSystem.Models.Models.StudentClass;
+using SchoolSystem.Models.Models.StudentSubject;
 using SchoolSystem.Services.Abstraction;
 using System;
 using System.Collections.Generic;
@@ -12,11 +12,11 @@ using System.Threading.Tasks;
 
 namespace SchoolSystem.Services.Services
 {
-    public class StudentClassService : IStudentClassService
+    public class StudentSubjectService : IStudentSubjectService
     {
         private readonly SchoolSystemDbContext _context;
         private readonly IMapper _mapper;
-        public StudentClassService(Data.SchoolSystemDbContext context, IMapper mapper)
+        public StudentSubjectService(Data.SchoolSystemDbContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;
@@ -30,13 +30,13 @@ namespace SchoolSystem.Services.Services
 
         public async Task<StudentSubjectModel> GetBySubjectId(int id)
         {
-            var studentClasses = await _context.StudentSubjects.Include(sc => sc.Student).Include(sc => sc.Class).Where(sc => sc.ClassId == id).ToListAsync();
+            var studentClasses = await _context.StudentSubjects.Include(sc => sc.Student).Include(sc => sc.Subject).Where(sc => sc.SubjectId == id).ToListAsync();
             return _mapper.Map<StudentSubjectModel>(studentClasses);
         }
 
         public async Task<StudentSubjectModel> GetByStudentId(int id)
         {
-            var studentClasses = await _context.StudentSubjects.Include(sc => sc.Student).Include(sc => sc.Class).Where(sc => sc.StudentId == id).ToListAsync();
+            var studentClasses = await _context.StudentSubjects.Include(sc => sc.Student).Include(sc => sc.Subject).Where(sc => sc.StudentId == id).ToListAsync();
             return _mapper.Map<StudentSubjectModel>(studentClasses);
         }
 

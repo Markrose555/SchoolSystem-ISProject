@@ -5,7 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using SchoolSystem.Services.Abstraction;
-using SchoolSystem.Models.Models.StudentClass;
+using SchoolSystem.Models.Models.StudentSubject;
 
 namespace SchoolSystem.Controllers
 {
@@ -13,16 +13,16 @@ namespace SchoolSystem.Controllers
     [ApiController]
     public class StudentSubjectController : ControllerBase
     {
-        private readonly IStudentClassService _service;
+        private readonly IStudentSubjectService _service;
 
-        public StudentSubjectController(IStudentClassService service)
+        public StudentSubjectController(IStudentSubjectService service)
         {
             _service = service;
         }
 
 
 
-        [HttpGet("ByClass/{id:int}", Name = nameof(GetBySubject))]
+        [HttpGet("BySubject/{id:int}", Name = nameof(GetBySubject))]
         public async Task<IActionResult> GetBySubject([FromRoute] int id)
         {
             var option = await _service.GetBySubjectId(id);

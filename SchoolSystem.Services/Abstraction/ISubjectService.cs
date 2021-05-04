@@ -1,4 +1,4 @@
-﻿using SchoolSystem.Models.Models.Class;
+﻿using SchoolSystem.Models.Models.Subject;
 using System;
 using System.Collections.Generic;
 using System.Text;

@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using SchoolSystem.Data.Entities;
-using SchoolSystem.Models.Models.StudentClass;
+using SchoolSystem.Models.Models.StudentSubject;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -12,14 +12,16 @@ namespace SchoolSystem.Models.Profiles
         public StudentSubjectProfile()
         {
             CreateMap<StudentSubject, StudentSubjectModel>().ReverseMap();
-            CreateMap<StudentSubjectCreateModel, StudentSubject>()
+            CreateMap<StudentSubjectCreateModel, StudentSubject>();
+            CreateMap<StudentSubjectUpdateModel, StudentSubject>();
+            /*CreateMap<StudentSubjectCreateModel, StudentSubject>()
                 .ForMember(dest => dest.Student, opt => opt.Ignore())
-                .ForMember(dest => dest.Class, opt => opt.Ignore())
+                .ForMember(dest => dest.Subject, opt => opt.Ignore())
                 .ForMember(dest => dest.Grade, opt => opt.Ignore());
             CreateMap<StudentSubjectUpdateModel, StudentSubject>()
                 .ForMember(dest => dest.Student, opt => opt.Ignore())
-                .ForMember(dest => dest.Class, opt => opt.Ignore())
-                .ForMember(dest => dest.Grade, opt => opt.Ignore());
+                .ForMember(dest => dest.Subject, opt => opt.Ignore())
+                .ForMember(dest => dest.Grade, opt => opt.Ignore());*/
 
         }
     }
