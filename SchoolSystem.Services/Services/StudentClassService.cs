@@ -23,38 +23,38 @@ namespace SchoolSystem.Services.Services
         }
         public async Task<bool> Delete(int id)
         {
-            var entity = await _context.Classes.FindAsync(id);
-            _context.Classes.Remove(entity);
+            var entity = await _context.Subjects.FindAsync(id);
+            _context.Subjects.Remove(entity);
             return await SaveAsync() > 0;
         }
 
-        public async Task<StudentClassModel> GetByClassId(int id)
+        public async Task<StudentSubjectModel> GetBySubjectId(int id)
         {
-            var studentClasses = await _context.StudentClasses.Include(sc => sc.Student).Include(sc => sc.Class).Where(sc => sc.ClassId == id).ToListAsync();
-            return _mapper.Map<StudentClassModel>(studentClasses);
+            var studentClasses = await _context.StudentSubjects.Include(sc => sc.Student).Include(sc => sc.Class).Where(sc => sc.ClassId == id).ToListAsync();
+            return _mapper.Map<StudentSubjectModel>(studentClasses);
         }
 
-        public async Task<StudentClassModel> GetByStudentId(int id)
+        public async Task<StudentSubjectModel> GetByStudentId(int id)
         {
-            var studentClasses = await _context.StudentClasses.Include(sc => sc.Student).Include(sc => sc.Class).Where(sc => sc.StudentId == id).ToListAsync();
-            return _mapper.Map<StudentClassModel>(studentClasses);
+            var studentClasses = await _context.StudentSubjects.Include(sc => sc.Student).Include(sc => sc.Class).Where(sc => sc.StudentId == id).ToListAsync();
+            return _mapper.Map<StudentSubjectModel>(studentClasses);
         }
 
-        public async Task<StudentClassModel> Insert(StudentClassCreateModel model)
+        public async Task<StudentSubjectModel> Insert(StudentSubjectCreateModel model)
         {
-            var entity = _mapper.Map<StudentClass>(model);
-            _context.StudentClasses.Add(entity);
+            var entity = _mapper.Map<StudentSubject>(model);
+            _context.StudentSubjects.Add(entity);
             await SaveAsync();
-            return _mapper.Map<StudentClassModel>(entity);
+            return _mapper.Map<StudentSubjectModel>(entity);
         }
 
-        public async Task<StudentClassModel> Update(StudentClassUpdateModel model)
+        public async Task<StudentSubjectModel> Update(StudentSubjectUpdateModel model)
         {
-            var entity = _mapper.Map<StudentClass>(model);
-            _context.StudentClasses.Attach(entity);
+            var entity = _mapper.Map<StudentSubject>(model);
+            _context.StudentSubjects.Attach(entity);
             _context.Entry(entity).State = EntityState.Modified;
             await SaveAsync();
-            return _mapper.Map<StudentClassModel>(entity);
+            return _mapper.Map<StudentSubjectModel>(entity);
         }
 
         public async Task<int> SaveAsync()

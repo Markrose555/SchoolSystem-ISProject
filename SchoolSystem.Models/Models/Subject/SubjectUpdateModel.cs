@@ -1,14 +1,14 @@
-﻿using SchoolSystem.Models.Models.StudentClass;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace SchoolSystem.Models.Models.Class
 {
-    public class ClassModelExtended
+    public class SubjectUpdateModel
     {
         public int Id { get; set; }
+        [Required(ErrorMessage = "You must enter a name for the Subject of the Class")]
         public string Subject { get; set; }
-        public IEnumerable<StudentClassModel> StudentClasses { get; set; }
     }
 }

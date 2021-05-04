@@ -15,9 +15,9 @@ namespace SchoolSystem.Data
         
         public DbSet<Student> Students { get; set; }
 
-        public DbSet<Class> Classes { get; set; }
+        public DbSet<Subject> Subjects { get; set; }
 
-        public DbSet<StudentClass> StudentClasses { get; set; }
+        public DbSet<StudentSubject> StudentSubjects { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -27,24 +27,24 @@ namespace SchoolSystem.Data
                 student.Property(s => s.Surname).IsRequired();
                 student.Property(s => s.Year).IsRequired();
                 student.HasKey(s => s.Id);
-                student.HasMany(s => s.StudentClasses);
+                student.HasMany(s => s.StudentSubjects);
             });
 
-            modelBuilder.Entity<Class>(Class =>
+            modelBuilder.Entity<Subject>(Subject =>
             {
-                Class.Property(c => c.Id).IsRequired();
-                Class.HasKey(c => c.Id);
-                Class.Property(c => c.Subject).HasMaxLength(800).IsRequired();
-                Class.HasMany(c => c.StudentClasses);
+                Subject.Property(su => su.Id).IsRequired();
+                Subject.HasKey(su => su.Id);
+                Subject.Property(su => su.Name).HasMaxLength(800).IsRequired();
+                Subject.HasMany(su => su.StudentSubjects);
             });
 
-            modelBuilder.Entity<StudentClass>(sc =>
+            modelBuilder.Entity<StudentSubject>(ss =>
             {
-                sc.Property(sc => sc.Id).IsRequired();
-                sc.HasKey(sc => sc.Id);
-                sc.Property(sc => sc.Grade).IsRequired();
-                sc.HasOne(sc => sc.Student).WithMany(s => s.StudentClasses).HasForeignKey(sc => sc.StudentId);
-                sc.HasOne(sc => sc.Class).WithMany(c => c.StudentClasses).HasForeignKey(sc => sc.ClassId);
+                ss.Property(ss => ss.Id).IsRequired();
+                ss.HasKey(ss => ss.Id);
+                ss.Property(ss => ss.Grade).IsRequired();
+                ss.HasOne(ss => ss.Student).WithMany(s => s.StudentSubjects).HasForeignKey(ss => ss.StudentId);
+                ss.HasOne(ss => ss.Subject).WithMany(su => su.StudentSubjects).HasForeignKey(ss => ss.SubjectId);
             });
         }
     }

@@ -8,13 +8,13 @@ namespace SchoolSystem.Services.Abstraction
 {
     public interface IStudentClassService
     {
-        Task<StudentClassModel> GetByClassId(int id);
+        Task<StudentSubjectModel> GetBySubjectId(int id);
 
-        Task<StudentClassModel> GetByStudentId(int id);
+        Task<StudentSubjectModel> GetByStudentId(int id);
 
-        Task<StudentClassModel> Insert(StudentClassCreateModel model);
+        Task<StudentSubjectModel> Insert(StudentSubjectCreateModel model);
 
-        Task<StudentClassModel> Update(StudentClassUpdateModel model);
+        Task<StudentSubjectModel> Update(StudentSubjectUpdateModel model);
 
         Task<bool> Delete(int id);
     }

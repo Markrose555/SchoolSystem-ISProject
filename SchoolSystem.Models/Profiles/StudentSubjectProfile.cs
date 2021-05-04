@@ -7,16 +7,16 @@ using System.Text;
 
 namespace SchoolSystem.Models.Profiles
 {
-    public class StudentClassProfile : Profile
+    public class StudentSubjectProfile : Profile
     {
-        public StudentClassProfile()
+        public StudentSubjectProfile()
         {
-            CreateMap<StudentClass, StudentClassModel>().ReverseMap();
-            CreateMap<StudentClassCreateModel, StudentClass>()
+            CreateMap<StudentSubject, StudentSubjectModel>().ReverseMap();
+            CreateMap<StudentSubjectCreateModel, StudentSubject>()
                 .ForMember(dest => dest.Student, opt => opt.Ignore())
                 .ForMember(dest => dest.Class, opt => opt.Ignore())
                 .ForMember(dest => dest.Grade, opt => opt.Ignore());
-            CreateMap<StudentClassUpdateModel, StudentClass>()
+            CreateMap<StudentSubjectUpdateModel, StudentSubject>()
                 .ForMember(dest => dest.Student, opt => opt.Ignore())
                 .ForMember(dest => dest.Class, opt => opt.Ignore())
                 .ForMember(dest => dest.Grade, opt => opt.Ignore());

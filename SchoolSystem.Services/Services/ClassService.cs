@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace SchoolSystem.Services.Services
 {
-    public class ClassService : IClassService
+    public class ClassService : ISubjectService
     {
 
         private readonly SchoolSystemDbContext _context;
@@ -25,38 +25,38 @@ namespace SchoolSystem.Services.Services
 
         public async Task<bool> Delete(int id)
         {
-            var entity = await _context.Classes.FindAsync(id);
-            _context.Classes.Remove(entity);
+            var entity = await _context.Subjects.FindAsync(id);
+            _context.Subjects.Remove(entity);
             return await SaveAsync() > 0;
         }
 
-        public async Task<IEnumerable<ClassModelBase>> Get()
+        public async Task<IEnumerable<SubjectModelBase>> Get()
         {
-            var classes = await _context.Classes.ToListAsync();
-            return _mapper.Map<IEnumerable<ClassModelBase>>(classes);
+            var classes = await _context.Subjects.ToListAsync();
+            return _mapper.Map<IEnumerable<SubjectModelBase>>(classes);
         }
 
-        public async Task<ClassModelExtended> Get(int id)
+        public async Task<SubjectModelExtended> Get(int id)
         {
-            var Class = await _context.Classes.Include(c => c.StudentClasses).ThenInclude(sc => sc.Class).FirstOrDefaultAsync(s => s.Id == id);
-            return _mapper.Map<ClassModelExtended>(Class);
+            var Class = await _context.Subjects.Include(c => c.StudentSubjects).ThenInclude(sc => sc.Class).FirstOrDefaultAsync(s => s.Id == id);
+            return _mapper.Map<SubjectModelExtended>(Class);
         }
 
-        public async Task<ClassModelBase> Insert(ClassCreateModel model)
+        public async Task<SubjectModelBase> Insert(SubjectCreateModel model)
         {
-            var entity = _mapper.Map<Class>(model);
-            await _context.Classes.AddAsync(entity);
+            var entity = _mapper.Map<Subject>(model);
+            await _context.Subjects.AddAsync(entity);
             await SaveAsync();
-            return _mapper.Map<ClassModelBase>(entity);
+            return _mapper.Map<SubjectModelBase>(entity);
         }
 
-        public async Task<ClassModelBase> Update(ClassUpdateModel model)
+        public async Task<SubjectModelBase> Update(SubjectUpdateModel model)
         {
-            var entity = _mapper.Map<Class>(model);
-            _context.Classes.Attach(entity);
+            var entity = _mapper.Map<Subject>(model);
+            _context.Subjects.Attach(entity);
             _context.Entry(entity).State = EntityState.Modified;
             await SaveAsync();
-            return _mapper.Map<ClassModelBase>(entity);
+            return _mapper.Map<SubjectModelBase>(entity);
         }
 
         public async Task<int> SaveAsync()

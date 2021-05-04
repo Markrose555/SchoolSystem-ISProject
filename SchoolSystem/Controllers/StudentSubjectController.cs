@@ -5,44 +5,47 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using SchoolSystem.Services.Abstraction;
-using SchoolSystem.Models.Models.Class;
+using SchoolSystem.Models.Models.StudentClass;
 
 namespace SchoolSystem.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ClassController : ControllerBase
+    public class StudentSubjectController : ControllerBase
     {
-        private readonly IClassService _service;
+        private readonly IStudentClassService _service;
 
-        public ClassController(IClassService service)
+        public StudentSubjectController(IStudentClassService service)
         {
             _service = service;
         }
 
-        [HttpGet("Options/{id:int}", Name = nameof(GetClass))]
-        public async Task<IActionResult> GetClass([FromRoute] int id)
+
+
+        [HttpGet("ByClass/{id:int}", Name = nameof(GetBySubject))]
+        public async Task<IActionResult> GetBySubject([FromRoute] int id)
         {
-            var option = await _service.Get(id);
+            var option = await _service.GetBySubjectId(id);
             return option != null ? Ok(option) : NoContent();
         }
 
-        [HttpGet("Classes")]
-        public async Task<IActionResult> Get()
+        [HttpGet("ByStudent/{id:int}", Name = nameof(GetByStudent))]
+        public async Task<IActionResult> GetByStudent([FromRoute] int id)
         {
-            var options = await _service.Get();
-            return options != null && options.Any() ? Ok(options) : NoContent();
+            var option = await _service.GetByStudentId(id);
+            return option != null ? Ok(option) : NoContent();
         }
 
+
         [HttpPost("")]
-        public async Task<IActionResult> Post([FromBody] ClassCreateModel model)
+        public async Task<IActionResult> Post([FromBody] StudentSubjectCreateModel model)
         {
             if (ModelState.IsValid)
             {
                 var item = await _service.Insert(model);
                 if (item != null)
                 {
-                    return CreatedAtRoute(nameof(GetClass), item, item.Id);
+                    return CreatedAtRoute(nameof(GetBySubject), item, item.Id);
                 }
 
                 return Conflict();
@@ -52,7 +55,7 @@ namespace SchoolSystem.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> Put([FromRoute] int id, [FromBody] ClassUpdateModel model)
+        public async Task<IActionResult> Put([FromRoute] int id, [FromBody] StudentSubjectUpdateModel model)
         {
             if (ModelState.IsValid)
             {

@@ -60,7 +60,7 @@ namespace SchoolSystem
             services.AddSingleton(mapper);
 
             services.AddTransient<IStudentService, StudentService>();
-            services.AddTransient<IClassService, ClassService>();
+            services.AddTransient<ISubjectService, ClassService>();
             services.AddTransient<IStudentClassService, StudentClassService>();
 
             services.AddSwaggerGen(c =>

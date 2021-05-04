@@ -18,6 +18,6 @@ namespace SchoolSystem.Models.Models.Student
         public DateTime DoB { get; set; }
         [Required]
         public int Year { get; set; }
-        public virtual ICollection<StudentClassModel> StudentClasses { get; set; }
+        public virtual ICollection<StudentSubjectModel> StudentClasses { get; set; }
     }
 }

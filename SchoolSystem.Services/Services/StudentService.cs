@@ -37,7 +37,7 @@ namespace SchoolSystem.Services.Services
 
         public async Task<StudentModelExtended> Get(int id)
         {
-            var player = await _context.Students.Include(p => p.StudentClasses).ThenInclude(sc => sc.Class).FirstOrDefaultAsync(s => s.Id == id);
+            var player = await _context.Students.Include(p => p.StudentSubjects).ThenInclude(sc => sc.Class).FirstOrDefaultAsync(s => s.Id == id);
             return _mapper.Map<StudentModelExtended>(player);
         }
 
