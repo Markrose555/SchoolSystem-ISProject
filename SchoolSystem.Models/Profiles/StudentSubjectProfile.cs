@@ -18,6 +18,11 @@ namespace SchoolSystem.Models.Profiles
             CreateMap<StudentSubjectCreateModel, StudentSubject>()
                 .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src));
 
+            CreateMap<StudentSubjectUpdateModel, Student>();
+
+            CreateMap<StudentSubjectUpdateModel, StudentSubject>()
+                .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src));
+
             /*CreateMap<StudentSubjectCreateModel, StudentSubject>()
                 .ForMember(dest => dest.Student, opt => opt.Ignore())
                 .ForMember(dest => dest.Subject, opt => opt.Ignore())
