@@ -12,7 +12,7 @@ namespace SchoolSystem.Models.Models.StudentSubject
         [Required]
         public int Student { get; set; }
         [Required]
-        public int Class { get; set; }
+        public int Subject { get; set; }
         [Required]
         public int Grade { get; set; }
     }

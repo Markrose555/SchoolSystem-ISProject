@@ -8,7 +8,7 @@ namespace SchoolSystem.Models.Models.Subject
     public class SubjectModelExtended
     {
         public int Id { get; set; }
-        public string Name { get; set; }
+        public string SubjectName { get; set; }
         public IEnumerable<StudentSubjectModel> StudentSubjects { get; set; }
     }
 }

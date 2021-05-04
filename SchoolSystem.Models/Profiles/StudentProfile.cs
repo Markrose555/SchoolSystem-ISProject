@@ -14,10 +14,10 @@ namespace SchoolSystem.Models.Profiles
             CreateMap<Student, StudentModelBase>().ReverseMap();
             CreateMap<Student, StudentModelExtended>();
             CreateMap<StudentCreateModel, Student>()
-                .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))
-                .ForMember(dest => dest.Surname, opt => opt.MapFrom(src => src.Surname))
-                .ForMember(dest => dest.DoB, opt => opt.MapFrom(src => src.DoB))
-                .ForMember(dest => dest.Year, opt => opt.MapFrom(src => src.Year));
+                .ForMember(dest => dest.StudentName, opt => opt.MapFrom(src => src.StudentName))
+                .ForMember(dest => dest.StudentSurname, opt => opt.MapFrom(src => src.StudentSurname))
+                .ForMember(dest => dest.StudentDoB, opt => opt.MapFrom(src => src.StudentDoB))
+                .ForMember(dest => dest.StudentYear, opt => opt.MapFrom(src => src.StudentYear));
         }
     }
 }

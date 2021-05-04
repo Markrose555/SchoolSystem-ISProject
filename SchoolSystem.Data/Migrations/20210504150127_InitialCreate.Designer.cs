@@ -10,7 +10,7 @@ using SchoolSystem.Data;
 namespace SchoolSystem.Data.Migrations
 {
     [DbContext(typeof(SchoolSystemDbContext))]
-    [Migration("20210504141214_InitialCreate")]
+    [Migration("20210504150127_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -28,18 +28,18 @@ namespace SchoolSystem.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("DoB")
+                    b.Property<DateTime>("StudentDoB")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Name")
+                    b.Property<string>("StudentName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Surname")
+                    b.Property<string>("StudentSurname")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Year")
+                    b.Property<int>("StudentYear")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -79,7 +79,7 @@ namespace SchoolSystem.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Name")
+                    b.Property<string>("SubjectName")
                         .IsRequired()
                         .HasMaxLength(800)
                         .HasColumnType("nvarchar(800)");

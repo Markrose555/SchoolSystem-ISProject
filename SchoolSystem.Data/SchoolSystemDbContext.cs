@@ -23,9 +23,9 @@ namespace SchoolSystem.Data
         {
             modelBuilder.Entity<Student>(student =>
             {
-                student.Property(s => s.Name).IsRequired();
-                student.Property(s => s.Surname).IsRequired();
-                student.Property(s => s.Year).IsRequired();
+                student.Property(s => s.StudentName).IsRequired();
+                student.Property(s => s.StudentSurname).IsRequired();
+                student.Property(s => s.StudentYear).IsRequired();
                 student.HasKey(s => s.Id);
                 student.HasMany(s => s.StudentSubjects);
             });
@@ -34,7 +34,7 @@ namespace SchoolSystem.Data
             {
                 Subject.Property(su => su.Id).IsRequired();
                 Subject.HasKey(su => su.Id);
-                Subject.Property(su => su.Name).HasMaxLength(800).IsRequired();
+                Subject.Property(su => su.SubjectName).HasMaxLength(800).IsRequired();
                 Subject.HasMany(su => su.StudentSubjects);
             });
 

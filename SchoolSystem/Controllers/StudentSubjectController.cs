@@ -45,7 +45,7 @@ namespace SchoolSystem.Controllers
                 var item = await _service.Insert(model);
                 if (item != null)
                 {
-                    return CreatedAtRoute(nameof(GetBySubject), item, item.Id);
+                    return CreatedAtRoute(nameof(GetByStudent), item, item.Id);
                 }
 
                 return Conflict();

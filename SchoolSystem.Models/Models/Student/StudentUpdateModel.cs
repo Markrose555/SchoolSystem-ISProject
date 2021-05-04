@@ -10,13 +10,13 @@ namespace SchoolSystem.Models.Models.Student
     {
         public int Id { get; set; }
 
-        [Required(ErrorMessage = "Student Name is requires")]
-        public string Name { get; set; }
+        [Required(ErrorMessage = "Student Name is required")]
+        public string StudentName { get; set; }
         [Required]
-        public string Surname { get; set; }
+        public string StudentSurname { get; set; }
         [DisplayName("Date of Birth")]
-        public DateTime DoB { get; set; }
+        public DateTime StudentDoB { get; set; }
         [Required]
-        public int Year { get; set; }
+        public int StudentYear { get; set; }
     }
 }

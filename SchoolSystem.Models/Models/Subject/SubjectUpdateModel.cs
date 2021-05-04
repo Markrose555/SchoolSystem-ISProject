@@ -9,6 +9,6 @@ namespace SchoolSystem.Models.Models.Subject
     {
         public int Id { get; set; }
         [Required(ErrorMessage = "You must enter a name for the Subject of the Class")]
-        public string Name { get; set; }
+        public string SubjectName { get; set; }
     }
 }

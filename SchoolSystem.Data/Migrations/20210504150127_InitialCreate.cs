@@ -13,10 +13,10 @@ namespace SchoolSystem.Data.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Surname = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    DoB = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Year = table.Column<int>(type: "int", nullable: false)
+                    StudentName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    StudentSurname = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    StudentDoB = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    StudentYear = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -29,7 +29,7 @@ namespace SchoolSystem.Data.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(800)", maxLength: 800, nullable: false)
+                    SubjectName = table.Column<string>(type: "nvarchar(800)", maxLength: 800, nullable: false)
                 },
                 constraints: table =>
                 {

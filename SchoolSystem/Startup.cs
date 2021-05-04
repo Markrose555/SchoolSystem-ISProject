@@ -55,6 +55,8 @@ namespace SchoolSystem
             var mapper = new MapperConfiguration(cfg =>
             {
                 cfg.AddMaps(typeof(StudentProfile));
+                cfg.AddMaps(typeof(SubjectProfile));
+                cfg.AddMaps(typeof(StudentSubjectProfile));
             }).CreateMapper();
 
             services.AddSingleton(mapper);
