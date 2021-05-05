@@ -71,11 +71,9 @@ namespace SchoolSystem.Controllers
         [HttpDelete("Delete/{id}")]
         public async Task<IActionResult> Delete([FromRoute] int id)
         {
-            if (ModelState.IsValid)
-            {
-                Ok(await _service.Delete(id));
-            }
-            return BadRequest();
+            return Ok(await _service.Delete(id));
+           
+            //return BadRequest();
         }
 
     }
