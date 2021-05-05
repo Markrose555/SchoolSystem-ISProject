@@ -23,9 +23,12 @@ namespace SchoolSystem.Services.Services
         }
         public async Task<bool> Delete(int id)
         {
-            var entity = await _context.Subjects.FindAsync(id);
-            _context.Subjects.Remove(entity);
-            return await SaveAsync() > 0;
+            var entity = await _context.StudentSubjects.FindAsync(id);
+            _context.StudentSubjects.Remove(entity);
+            if (await SaveAsync() > 0)
+                return true;
+            else
+                return false;
         }
 
         public async Task<StudentSubjectModel> GetBySubjectId(int id)

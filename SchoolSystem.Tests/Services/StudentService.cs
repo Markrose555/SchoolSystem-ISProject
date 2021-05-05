@@ -36,5 +36,10 @@ namespace SchoolSystem.Tests.Services
             return await httpClient.GetAsync(path);
 
         }
+
+        public async Task<HttpResponseMessage> DelStudent(string path = "Students")
+        {
+            return await httpClient.DeleteAsync(path);
+        }
     }
 }

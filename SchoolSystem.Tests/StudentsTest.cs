@@ -30,5 +30,14 @@ namespace SchoolSystem.Tests
             Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
             //var studentResponse = JsonConvert.DeserializeObject<List<Student>>(await response.Content.ReadAsStringAsync());
         }
+
+        [Test]
+        public async Task ShouldDeleteStudentID1()
+        {
+            var studentID = "1";
+            var response = await studentService.DelStudent(studentID);
+            Assert.AreEqual(true, response.IsSuccessStatusCode);
+            Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
+        }
     }
 }
